@@ -36,7 +36,7 @@ GameManager.prototype.isGameTerminated = function () {
 
 // Set up the game
 GameManager.prototype.setup = function () {
-    this.grid        = new Grid(this.size);
+    this.grid = new Grid(this.size);
 
     if((state = this.scoreManager.getState()) != null){
         console.log("Loaded state from localstorage", state);
