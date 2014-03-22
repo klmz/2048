@@ -19,8 +19,9 @@ window.fakeStorage = {
 };
 
 function LocalScoreManager() {
-  this.key     = "bestScore";
-
+  this.key         = "bestScore";
+  this.key_state    = "gameState";
+  this.key_score   = "currentScore";
   var supported = this.localStorageSupported();
   this.storage = supported ? window.localStorage : window.fakeStorage;
 }
@@ -46,3 +47,22 @@ LocalScoreManager.prototype.set = function (score) {
   this.storage.setItem(this.key, score);
 };
 
+LocalScoreManager.prototype.getState = function(){
+    return this.storage.getItem(this.key_state);
+}
+
+LocalScoreManager.prototype.setState = function(state){
+    return this.storage.setItem(this.key_state, state);
+}
+
+LocalScoreManager.prototype.resetState= function(){
+    return this.storage.removeItem(this.key_state);
+}
+
+LocalScoreManager.prototype.getScore= function(){
+    return parseInt(this.storage.getItem(this.key_score));
+}
+
+LocalScoreManager.prototype.setScore = function(score){
+    return this.storage.setItem(this.key_score, score);
+}
